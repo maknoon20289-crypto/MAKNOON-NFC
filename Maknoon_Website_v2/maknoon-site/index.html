@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2944">
+  <meta name="description" content="مكنون منصة عُمانية لاكتشاف المواهب وإبراز قدراتها وربطها بالمؤسسات والفرص.">
+  <title>مكنون | نكتشف الموهبة، ونفتح آفاق الفرص</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;450;500;550;600;650;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/maknoon-logo.png">
+  <style>
+    :root {
+      --navy: #0b2944;
+      --navy-2: #123650;
+      --navy-3: #183f55;
+      --gold: #c39a5e;
+      --gold-light: #e4c99e;
+      --cream: #f5f0e7;
+      --paper: #fbf8f2;
+      --sand: #e7d9c2;
+      --teal: #6d9698;
+      --ink: #142b3c;
+      --muted: #687681;
+      --line: rgba(21, 47, 66, .12);
+      --shadow: 0 24px 70px rgba(7, 30, 49, .12);
+      --radius: 26px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "IBM Plex Sans Arabic", Tahoma, sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 11px; color: var(--gold); font-size: 13px; font-weight: 600; letter-spacing: .04em; }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    .section-title { margin: 14px 0 16px; font-size: clamp(30px, 4.2vw, 48px); line-height: 1.3; letter-spacing: -.035em; font-weight: 600; }
+    .section-copy { color: var(--muted); font-size: 17px; max-width: 680px; margin: 0; }
+    .gold-text { color: var(--gold-light); }
+
+    /* Header */
+    .site-header { position: absolute; inset: 0 0 auto; z-index: 20; padding: 21px 0; color: #fff; }
+    .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: 185px; }
+    .brand-mark { width: 43px; height: 43px; display: block; border-radius: 10px; overflow: hidden; border: 1px solid rgba(224,194,145,.45); }
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand-name { font-size: 21px; line-height: 1.15; font-weight: 650; letter-spacing: -.02em; }
+    .brand-name small { display: block; direction: ltr; text-align: right; font-family: Arial, sans-serif; font-size: 10px; letter-spacing: .18em; font-weight: 500; opacity: .7; margin-top: 4px; }
+    .nav-links { display: flex; align-items: center; gap: clamp(16px, 3vw, 35px); color: rgba(255,255,255,.78); font-size: 14px; }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--gold-light); }
+    .nav-contact { border: 1px solid rgba(226,200,160,.55); border-radius: 999px; padding: 9px 19px; color: var(--gold-light); font-size: 13px; transition: .25s ease; }
+    .nav-contact:hover { background: var(--gold); color: var(--navy); }
+    .menu-toggle { display: none; background: transparent; color: white; border: 1px solid rgba(255,255,255,.25); border-radius: 12px; padding: 8px 10px; cursor: pointer; }
+
+    /* Hero */
+    .hero { min-height: 760px; position: relative; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse at 17% 24%, rgba(34,78,102,.56), transparent 37%), linear-gradient(125deg, #071e35 0%, #0b2944 52%, #123852 100%); color: #fff; padding: 145px 0 90px; }
+    .hero::before { content: ""; position: absolute; width: 660px; height: 660px; border: 1px solid rgba(207,166,105,.17); border-radius: 50%; inset: -340px auto auto -190px; z-index: -1; box-shadow: 0 0 0 48px rgba(207,166,105,.025), 0 0 0 100px rgba(207,166,105,.02); }
+    .hero::after { content: ""; position: absolute; width: 680px; height: 680px; border: 1px solid rgba(207,166,105,.12); border-radius: 50%; inset: auto -355px -460px auto; z-index: -1; box-shadow: 0 0 0 55px rgba(207,166,105,.025), 0 0 0 115px rgba(207,166,105,.018); }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: clamp(35px, 7vw, 95px); min-height: 520px; }
+    .hero-content { position: relative; z-index: 2; padding-top: 20px; }
+    .hero-kicker { color: var(--gold-light); font-size: 14px; display: inline-flex; gap: 12px; align-items: center; margin-bottom: 18px; }
+    .hero-kicker span { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 6px rgba(195,154,94,.12); }
+    .hero h1 { font-size: clamp(43px, 6.1vw, 76px); letter-spacing: -.055em; line-height: 1.25; margin: 0 0 22px; font-weight: 600; max-width: 660px; }
+    .hero h1 em { color: var(--gold-light); font-style: normal; }
+    .hero-lead { color: rgba(244,239,230,.76); max-width: 585px; font-size: clamp(17px, 1.7vw, 20px); line-height: 2; margin: 0 0 31px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 13px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 13px 23px; border-radius: 999px; font-size: 14px; font-weight: 550; transition: transform .22s ease, box-shadow .22s ease, background .22s ease; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { background: linear-gradient(135deg, #e2c697, #bd9153); color: #102a40; box-shadow: 0 12px 30px rgba(195,154,94,.2); }
+    .btn-primary:hover { box-shadow: 0 17px 38px rgba(195,154,94,.3); }
+    .btn-ghost { color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.23); }
+    .btn-ghost:hover { border-color: var(--gold-light); color: var(--gold-light); }
+    .btn svg { width: 17px; height: 17px; }
+    .hero-note { color: rgba(244,239,230,.48); font-size: 12px; margin-top: 43px; display: flex; align-items: center; gap: 12px; }
+    .hero-note::before { content: ""; height: 1px; width: 42px; background: var(--gold); }
+    .hero-visual { position: relative; display: grid; place-items: center; min-height: 430px; }
+    .logo-orbit { position: absolute; width: min(440px, 100%); aspect-ratio: 1; border: 1px solid rgba(219,188,137,.35); border-radius: 50%; }
+    .logo-orbit::before, .logo-orbit::after { content: ""; position: absolute; border: 1px solid rgba(219,188,137,.19); border-radius: 50%; inset: 23px; }
+    .logo-orbit::after { inset: -27px; border-style: dashed; opacity: .45; }
+    .logo-card { width: min(350px, 82%); aspect-ratio: 1; position: relative; border-radius: 34px; overflow: hidden; background: #0b2944; box-shadow: 0 35px 90px rgba(0,0,0,.35), 0 0 0 1px rgba(231,205,165,.22); transform: rotate(2deg); }
+    .logo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .orbit-dot { position: absolute; width: 11px; height: 11px; background: var(--gold-light); border-radius: 50%; box-shadow: 0 0 0 7px rgba(195,154,94,.12); }
+    .orbit-dot.one { top: 52px; right: 62px; }
+    .orbit-dot.two { bottom: 53px; left: 48px; width: 7px; height: 7px; }
+    .visual-caption { position: absolute; bottom: 12px; left: 0; background: rgba(9,34,54,.82); border: 1px solid rgba(226,200,160,.26); backdrop-filter: blur(12px); color: var(--gold-light); border-radius: 16px; padding: 11px 18px; font-size: 12px; }
+    .hero-bottom { position: absolute; bottom: 0; inset-inline: 0; border-top: 1px solid rgba(255,255,255,.1); }
+    .hero-bottom .container { display: flex; justify-content: space-between; padding: 17px 0; color: rgba(255,255,255,.48); font-size: 11px; }
+    .scroll-cue { display: inline-flex; align-items: center; gap: 9px; }
+    .scroll-cue i { display: inline-block; height: 25px; width: 15px; border: 1px solid rgba(227,202,164,.55); border-radius: 12px; position: relative; }
+    .scroll-cue i::after { content: ""; position: absolute; top: 5px; right: 6px; width: 2px; height: 5px; border-radius: 2px; background: var(--gold-light); }
+
+    /* Intro */
+    .intro { padding: 118px 0 112px; background: var(--paper); position: relative; overflow: hidden; }
+    .intro::after { content: none; }
+    .intro-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; align-items: start; position: relative; z-index: 1; }
+    .intro-side { padding-top: 10px; }
+    .intro-side .mini-label { color: var(--gold); font-size: 12px; letter-spacing: .12em; direction: ltr; display: inline-block; }
+    .intro-wordmark { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-top: 28px; }
+    .intro-wordmark .word-ar { color: var(--navy); font-size: clamp(58px, 6.2vw, 76px); line-height: 1.22; font-weight: 650; letter-spacing: -.055em; }
+    .intro-wordmark .word-en { direction: ltr; font-family: Arial, sans-serif; color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: .27em; padding-left: 4px; }
+    .intro-wordmark::after { content: ""; width: 58px; height: 2px; background: linear-gradient(90deg, var(--gold), rgba(195,154,94,0)); margin-top: 12px; }
+    .intro-text { border-right: 1px solid rgba(195,154,94,.55); padding-right: 39px; }
+    .intro-text p { font-size: clamp(19px, 2.2vw, 25px); line-height: 2.05; margin: 0; max-width: 800px; }
+    .intro-text strong { color: var(--navy); font-weight: 650; }
+    .intro-foot { display: flex; align-items: center; gap: 15px; margin-top: 29px; color: var(--muted); font-size: 13px; }
+    .intro-foot span { height: 1px; width: 38px; background: var(--gold); }
+
+    /* Services */
+    .services { padding: 112px 0 125px; background: #eee7da; position: relative; overflow: hidden; }
+    .services::before { content: ""; position: absolute; width: 600px; height: 600px; border: 1px solid rgba(195,154,94,.19); border-radius: 50%; top: -395px; left: -240px; box-shadow: 0 0 0 40px rgba(195,154,94,.035), 0 0 0 85px rgba(195,154,94,.025); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-bottom: 50px; position: relative; z-index: 1; }
+    .section-head .section-copy { max-width: 390px; font-size: 15px; }
+    .service-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; position: relative; z-index: 1; }
+    .service-card { min-height: 280px; background: rgba(251,248,242,.82); border: 1px solid rgba(19,48,69,.08); border-radius: 20px; padding: 26px 21px 24px; position: relative; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); background: #fffdf9; }
+    .service-card::after { content: ""; position: absolute; width: 120px; height: 120px; border: 1px solid rgba(195,154,94,.2); border-radius: 50%; bottom: -80px; left: -55px; box-shadow: 0 0 0 13px rgba(195,154,94,.035); }
+    .service-number { color: #b58b53; font-size: 11px; letter-spacing: .12em; direction: ltr; display: block; }
+    .service-icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 17px 17px 17px 5px; background: var(--navy); color: var(--gold-light); margin: 27px 0 22px; }
+    .service-icon svg { width: 25px; height: 25px; }
+    .service-card h3 { font-size: 18px; margin: 0 0 9px; font-weight: 600; }
+    .service-card p { font-size: 13px; color: var(--muted); line-height: 1.9; margin: 0; }
+
+    /* Why */
+    .why { background: var(--navy); color: white; padding: 112px 0 120px; position: relative; overflow: hidden; }
+    .why::before { content: ""; position: absolute; width: 760px; height: 760px; border: 1px solid rgba(221,190,142,.12); border-radius: 50%; right: -410px; top: -450px; box-shadow: 0 0 0 55px rgba(221,190,142,.025), 0 0 0 110px rgba(221,190,142,.02); }
+    .why-grid { display: grid; grid-template-columns: 1fr .75fr; gap: 85px; align-items: center; position: relative; z-index: 1; }
+    .why .section-copy { color: rgba(255,255,255,.62); }
+    .why-quote { border-right: 1px solid var(--gold); padding: 14px 30px 14px 0; font-size: clamp(25px, 3.3vw, 39px); line-height: 1.75; font-weight: 500; max-width: 670px; margin: 32px 0 0; }
+    .why-quote span { color: var(--gold-light); }
+    .why-aside { border: 1px solid rgba(224,196,154,.25); border-radius: 24px; padding: 32px; background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.015)); position: relative; }
+    .why-aside::before { content: "✦"; position: absolute; left: 28px; top: 16px; color: var(--gold); font-size: 24px; }
+    .why-aside .aside-title { color: var(--gold-light); font-size: 13px; margin: 0 0 13px; }
+    .why-aside h3 { font-size: 25px; line-height: 1.6; font-weight: 500; margin: 0 0 16px; }
+    .why-aside p { color: rgba(255,255,255,.58); font-size: 14px; margin: 0; }
+    .why-aside .small-rule { height: 1px; width: 48px; background: var(--gold); margin: 25px 0 0; }
+
+    /* Vision */
+    .vision { padding: 118px 0; background: var(--paper); }
+    .vision-top { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 45px; }
+    .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .vision-card { padding: 39px 40px 42px; border-radius: var(--radius); min-height: 255px; position: relative; overflow: hidden; }
+    .vision-card.dark { background: linear-gradient(135deg, #0a2740, #16445a); color: white; }
+    .vision-card.light { background: #e9dfce; color: var(--ink); }
+    .vision-card .card-kicker { font-size: 12px; letter-spacing: .06em; opacity: .7; }
+    .vision-card h3 { font-size: 27px; font-weight: 550; margin: 24px 0 12px; position: relative; z-index: 1; }
+    .vision-card p { max-width: 440px; margin: 0; font-size: 15px; line-height: 2; opacity: .78; position: relative; z-index: 1; }
+    .vision-card .decor { position: absolute; width: 220px; height: 220px; border: 1px solid rgba(195,154,94,.3); border-radius: 50%; left: -100px; bottom: -130px; box-shadow: 0 0 0 17px rgba(195,154,94,.045), 0 0 0 36px rgba(195,154,94,.035); }
+    .vision-card.light .decor { border-color: rgba(11,41,68,.14); box-shadow: 0 0 0 17px rgba(11,41,68,.025), 0 0 0 36px rgba(11,41,68,.02); }
+
+    /* Oman */
+    .oman { background: #e9e0d1; padding: 96px 0; overflow: hidden; position: relative; }
+    .oman-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 80px; }
+    .oman-art { min-height: 310px; position: relative; border-radius: 28px; background: linear-gradient(145deg, #12364e, #071f36); overflow: hidden; box-shadow: var(--shadow); }
+    .oman-art::before { content: ""; position: absolute; width: 450px; height: 240px; border: 1px solid rgba(226,196,147,.65); border-radius: 50% 50% 0 0; transform: rotate(-13deg); bottom: -100px; left: -70px; box-shadow: 0 -13px 0 -12px rgba(226,196,147,.65), 0 -38px 0 -37px rgba(226,196,147,.45); }
+    .oman-art::after { content: "✦"; color: var(--gold-light); font-size: 36px; position: absolute; top: 40px; right: 45px; }
+    .oman-stamp { position: absolute; bottom: 32px; right: 35px; color: rgba(245,240,231,.84); font-size: 13px; letter-spacing: .08em; }
+    .oman-stamp strong { display: block; color: var(--gold-light); font-size: 21px; font-weight: 500; letter-spacing: 0; }
+    .oman-copy h2 { font-size: clamp(32px, 4vw, 46px); line-height: 1.45; margin: 15px 0; font-weight: 600; }
+    .oman-copy p { color: #64717a; font-size: 17px; max-width: 550px; margin: 0; }
+
+    /* Contact */
+    .contact { background: var(--navy); color: white; padding: 110px 0 60px; position: relative; overflow: hidden; }
+    .contact::before { content: ""; position: absolute; width: 580px; height: 580px; border: 1px solid rgba(221,190,142,.15); border-radius: 50%; left: -330px; bottom: -410px; box-shadow: 0 0 0 45px rgba(221,190,142,.025), 0 0 0 92px rgba(221,190,142,.02); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; position: relative; z-index: 1; padding-bottom: 85px; }
+    .contact h2 { font-size: clamp(35px, 4.7vw, 55px); line-height: 1.35; margin: 15px 0; font-weight: 550; }
+    .contact .section-copy { color: rgba(255,255,255,.6); }
+    .contact-links { display: grid; gap: 13px; }
+    .contact-link { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 19px 21px; border: 1px solid rgba(255,255,255,.17); border-radius: 17px; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+    .contact-link:hover { background: rgba(255,255,255,.06); border-color: rgba(224,196,154,.55); transform: translateX(-4px); }
+    .contact-link .link-info { display: flex; align-items: center; gap: 15px; min-width: 0; }
+    .contact-icon { width: 43px; height: 43px; border-radius: 14px; display: grid; place-items: center; color: var(--gold-light); background: rgba(195,154,94,.13); flex: 0 0 auto; }
+    .contact-icon svg { width: 19px; height: 19px; }
+    .contact-link small { display: block; color: rgba(255,255,255,.48); font-size: 11px; }
+    .contact-link strong { display: block; color: #f7f1e7; font-size: 14px; font-weight: 500; direction: ltr; text-align: right; overflow-wrap: anywhere; }
+    .contact-link .arrow { color: var(--gold); font-size: 20px; }
+    .footer { border-top: 1px solid rgba(255,255,255,.13); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; color: rgba(255,255,255,.47); font-size: 12px; position: relative; z-index: 1; }
+    .footer-brand { display: flex; align-items: center; gap: 11px; color: var(--gold-light); }
+    .footer-brand img { width: 43px; height: 43px; object-fit: cover; border-radius: 9px; }
+    .footer-brand span { display: block; line-height: 1.4; }
+    .footer-brand b { display: block; color: #f4eee4; font-weight: 500; font-size: 14px; }
+
+    /* Reveal / accessibility */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+
+    @media (max-width: 980px) {
+      .hero { min-height: auto; padding-bottom: 90px; }
+      .hero-grid { grid-template-columns: 1fr .8fr; gap: 25px; }
+      .hero-visual { min-height: 350px; }
+      .logo-card { width: min(290px, 86%); }
+      .logo-orbit { width: min(350px, 100%); }
+      .service-grid { grid-template-columns: repeat(3, 1fr); }
+      .service-card { min-height: 250px; }
+      .intro-grid { gap: 45px; }
+      .why-grid { gap: 40px; }
+      .oman-grid { gap: 45px; }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(100% - 36px, var(--max)); }
+      .site-header { padding: 15px 0; }
+      .brand { min-width: 0; }
+      .brand-mark { width: 37px; height: 37px; }
+      .brand-name { font-size: 19px; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-contact { display: none; }
+      .nav-links { display: none; position: absolute; top: 70px; inset-inline: 18px; padding: 15px; border: 1px solid rgba(231,205,165,.2); border-radius: 18px; background: rgba(7,30,50,.97); backdrop-filter: blur(16px); flex-direction: column; align-items: stretch; gap: 0; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 12px; border-radius: 10px; }
+      .nav-links a:hover { background: rgba(255,255,255,.06); }
+      .hero { padding: 115px 0 77px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-content { padding-top: 16px; }
+      .hero h1 { font-size: clamp(41px, 11vw, 59px); margin-bottom: 16px; }
+      .hero-lead { font-size: 16px; margin-bottom: 24px; }
+      .hero-note { margin-top: 27px; }
+      .hero-visual { min-height: 300px; margin: 0 auto; width: 100%; }
+      .logo-orbit { width: 290px; max-width: 85vw; }
+      .logo-card { width: 230px; max-width: 68vw; border-radius: 25px; }
+      .visual-caption { bottom: 0; left: 7%; }
+      .hero-bottom .container { font-size: 10px; }
+      .intro, .services, .why, .vision { padding: 78px 0; }
+      .intro-grid { grid-template-columns: 1fr; gap: 22px; }
+      .intro-side { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+      .intro-wordmark { margin: 0; align-items: flex-start; }
+      .intro-wordmark .word-ar { font-size: clamp(43px, 11vw, 56px); }
+      .intro-wordmark .word-en { font-size: 10px; }
+      .intro-wordmark::after { margin-top: 7px; width: 42px; }
+      .intro-text { padding-right: 20px; }
+      .intro-text p { font-size: 18px; }
+      .section-head, .vision-top { display: block; margin-bottom: 31px; }
+      .section-head .section-copy, .vision-top .section-copy { margin-top: 13px; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+      .service-card { min-height: 235px; padding: 21px 17px; }
+      .service-card:last-child { grid-column: 1 / -1; min-height: 205px; }
+      .service-icon { margin: 20px 0 16px; width: 48px; height: 48px; }
+      .service-card h3 { font-size: 16px; }
+      .service-card p { font-size: 12px; }
+      .why-grid { grid-template-columns: 1fr; gap: 35px; }
+      .why-quote { font-size: 26px; padding-right: 20px; }
+      .why-aside { padding: 27px; }
+      .vision-grid { grid-template-columns: 1fr; gap: 13px; }
+      .vision-card { padding: 30px 27px; min-height: 235px; }
+      .vision-card h3 { font-size: 24px; }
+      .oman { padding: 75px 0; }
+      .oman-grid { grid-template-columns: 1fr; gap: 30px; }
+      .oman-art { min-height: 245px; order: 2; }
+      .oman-copy { order: 1; }
+      .oman-copy p { font-size: 15px; }
+      .contact { padding: 78px 0 28px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 31px; padding-bottom: 50px; }
+      .contact h2 { font-size: 39px; }
+      .contact-link { padding: 15px; }
+      .footer { align-items: flex-start; flex-direction: column; gap: 14px; }
+    }
+    @media (max-width: 370px) {
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card, .service-card:last-child { min-height: 0; }
+      .service-card:last-child { grid-column: auto; }
+      .hero-actions .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="مكنون - الرئيسية">
+        <span class="brand-mark" aria-hidden="true"><img src="assets/maknoon-logo.png" alt=""></span>
+        <span class="brand-name">مكنون<small>MAKNOON</small></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="التنقل الرئيسي">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">عن مكنون</a>
+        <a href="#services">ماذا نقدم</a>
+        <a href="#vision">رؤيتنا</a>
+        <a href="#oman">من عُمان</a>
+      </nav>
+      <a class="nav-contact" href="#contact">تواصل معنا</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-kicker"><span></span> مساحة عُمانية لاكتشاف الإمكانات</div>
+          <h1>كل موهبة تحمل بداخلها <em>إمكانات</em> تستحق أن تُكتشف.</h1>
+          <p class="hero-lead">مكنون منصة عُمانية لاكتشاف المواهب وإبراز قدراتها، وربطها بالمؤسسات والفرص التي تفتح أمامها آفاقًا جديدة.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#about">اكتشف مكنون <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7 7-7-7 7-7"/></svg></a>
+            <a class="btn btn-ghost" href="#contact">تواصل معنا</a>
+          </div>
+          <div class="hero-note">نكتشف الموهبة، ونفتح آفاق الفرص.</div>
+        </div>
+        <div class="hero-visual" aria-label="شعار مكنون">
+          <div class="logo-orbit"></div><span class="orbit-dot one"></span><span class="orbit-dot two"></span>
+          <div class="logo-card"><img src="assets/maknoon-logo.png" alt="الشعار الرسمي لمكنون" fetchpriority="high"></div>
+          <div class="visual-caption">Maknoon · Discover your potential</div>
+        </div>
+      </div>
+      <div class="hero-bottom"><div class="container"><span>MAKNOON · OMAN</span><span class="scroll-cue"><i></i> مرّر لاكتشاف المزيد</span></div></div>
+    </section>
+
+    <section class="intro" id="about">
+      <div class="container intro-grid">
+        <div class="intro-side reveal">
+          <span class="mini-label">ABOUT MAKNOON</span>
+          <div class="intro-wordmark" aria-label="مكنون Maknoon">
+            <span class="word-ar">مكنون</span>
+            <span class="word-en">MAKNOON</span>
+          </div>
+        </div>
+        <div class="intro-text reveal">
+          <span class="eyebrow">عن مكنون</span>
+          <h2 class="section-title">الموهبة تستحق أن تُرى.</h2>
+          <p><strong>مكنون</strong> منصة رقمية عُمانية تهدف إلى اكتشاف المواهب وإبراز قدراتها وإمكاناتها، وتوفير مساحة تساعد على توثيق المهارات والأعمال والإنجازات، وربط أصحاب المواهب بالمؤسسات والجهات الباحثة عن الكفاءات والقدرات الإبداعية.</p>
+          <div class="intro-foot"><span></span> من فكرة تؤمن بالإمكانات، إلى مساحة تقرّبها من الفرص.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">WHAT WE OFFER</span><h2 class="section-title">مساحة تُظهر ما لديك.</h2></div>
+          <p class="section-copy">نجمع في مكنون عناصر تساعد الموهبة على الظهور، وتسهّل على المؤسسات اكتشاف القدرات المناسبة.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <span class="service-number">01 / DISCOVER</span>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5M8 11l2 2 4-4"/></svg></div>
+            <h3>اكتشاف المواهب</h3><p>إبراز القدرات والمهارات والمجالات التي يتميز بها كل موهوب.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-number">02 / PROFILE</span>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.8h8l4 4V20H6z"/><path d="M14 4v4h4M9 12h6M9 15.5h6"/></svg></div>
+            <h3>الجواز المهني</h3><p>مساحة لتوثيق المهارات والأعمال والإنجازات وبناء صورة مهنية متكاملة.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-number">03 / OPPORTUNITIES</span>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17.5 9 12l3.2 3.2L20 7.5"/><path d="M14.5 7.5H20V13"/></svg></div>
+            <h3>الفرص</h3><p>تسليط الضوء على فرص التدريب والمشاريع والمسابقات والتعاون وغيرها.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-number">04 / CONNECTION</span>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2.8 19c.4-3 2-4.5 4.2-4.5s3.8 1.5 4.2 4.5M12.8 19c.4-3 2-4.5 4.2-4.5s3.8 1.5 4.2 4.5"/></svg></div>
+            <h3>ربط المواهب بالمؤسسات</h3><p>تقريب المسافة بين أصحاب المواهب والجهات الباحثة عن الكفاءات.</p>
+          </article>
+          <article class="service-card reveal">
+            <span class="service-number">05 / SHOWCASE</span>
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><circle cx="9" cy="9" r="1.5"/><path d="m5 17 5-4 3 2 3-3 3 3"/></svg></div>
+            <h3>إبراز الإنجازات</h3><p>منح المواهب مساحة لعرض أعمالها وإمكاناتها بطريقة واضحة واحترافية.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" id="why">
+      <div class="container why-grid">
+        <div class="reveal">
+          <span class="eyebrow">WHY MAKNOON</span>
+          <h2 class="section-title">لأن الوصول إلى الفرصة يبدأ بالاكتشاف.</h2>
+          <p class="section-copy">مكنون ليس منصة توظيف تقليدية؛ بل مساحة تجمع بين اكتشاف المواهب وإظهار قدراتها وتقريبها من الجهات والفرص المناسبة.</p>
+          <blockquote class="why-quote">قد تكون الموهبة موجودة، وقد تكون الفرصة موجودة، لكن ما ينقصهما هو <span>اللقاء.</span></blockquote>
+        </div>
+        <aside class="why-aside reveal">
+          <p class="aside-title">الفكرة التي نؤمن بها</p>
+          <h3>كل موهبة تحمل قيمة، وكل فرصة قد تكون بداية.</h3>
+          <p>عندما تظهر الإمكانات بوضوح، يصبح الوصول إلى الأشخاص المناسبين أكثر قربًا، وتبدأ مساحات جديدة للنمو والتعاون.</p>
+          <div class="small-rule"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="vision" id="vision">
+      <div class="container">
+        <div class="vision-top reveal">
+          <div><span class="eyebrow">OUR DIRECTION</span><h2 class="section-title">نؤمن بالإمكانيات.</h2></div>
+          <p class="section-copy">نطمح إلى أن تكون الموهبة مرئية، وأن تكون الفرصة أقرب إلى من يستحقها.</p>
+        </div>
+        <div class="vision-grid">
+          <article class="vision-card dark reveal">
+            <span class="card-kicker">رؤيتنا</span>
+            <h3>أن نكون مساحة وطنية لاكتشاف المواهب.</h3>
+            <p>نسهم في إبراز الإمكانات وفتح آفاق جديدة أمام المواهب، لتصل إلى الفرص التي تساعدها على النمو.</p>
+            <span class="decor" aria-hidden="true"></span>
+          </article>
+          <article class="vision-card light reveal">
+            <span class="card-kicker">رسالتنا</span>
+            <h3>نقرّب الموهبة من فرصتها.</h3>
+            <p>نؤمن أن لكل موهبة قيمة، وأن الوصول إلى الفرصة المناسبة قد يصنع بداية مختلفة؛ لذلك نسعى إلى تحويل الإمكانات إلى إنجازات.</p>
+            <span class="decor" aria-hidden="true"></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="oman" id="oman">
+      <div class="container oman-grid">
+        <div class="oman-copy reveal">
+          <span class="eyebrow">ROOTED IN OMAN</span>
+          <h2>من عُمان،<br>نفتح آفاق الغد.</h2>
+          <p>مشروع عُماني ينطلق بإيمان أن في كل مكان مواهب تستحق أن تُكتشف، وأن كل قدرة يمكن أن تجد المساحة التي تليق بها.</p>
+        </div>
+        <div class="oman-art reveal" role="img" aria-label="تكوين فني مستوحى من ألوان مكنون وعُمان">
+          <div class="oman-stamp">MAKNOON <strong>من عُمان إلى آفاق أوسع</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-inner">
+          <div class="reveal">
+            <span class="eyebrow">LET'S CONNECT</span>
+            <h2>لِنبدأ<br><span class="gold-text">حوارًا جديدًا.</span></h2>
+            <p class="section-copy">للاستفسارات والتعاون، يسعدنا تواصلكم معنا عبر قنوات مكنون.</p>
+          </div>
+          <div class="contact-links reveal">
+            <a class="contact-link" href="mailto:maknoon20289@gmail.com">
+              <span class="link-info"><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><small>البريد الإلكتروني</small><strong>maknoon20289@gmail.com</strong></span></span><span class="arrow">↗</span>
+            </a>
+            <a class="contact-link" href="https://www.instagram.com/maknoon.om7/" target="_blank" rel="noopener noreferrer">
+              <span class="link-info"><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span><span><small>إنستغرام</small><strong>@maknoon.om7</strong></span></span><span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="footer-brand"><img src="assets/maknoon-logo.png" alt=""><span><b>مكنون | Maknoon</b>نكتشف الموهبة، ونفتح آفاق الفرص.</span></div>
+          <span>© <span id="year">2026</span> مكنون. جميع الحقوق محفوظة.</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'إغلاق القائمة' : 'فتح القائمة');
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'فتح القائمة');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
